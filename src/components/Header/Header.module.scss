@@ -1,0 +1,11 @@
+@import '~theme/index';
+
+.header {
+    .toolbar {
+        background: $brand;
+        .title{
+            color: $white;
+        }
+        
+    }
+}
