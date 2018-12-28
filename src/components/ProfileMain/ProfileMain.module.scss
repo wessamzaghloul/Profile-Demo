@@ -1,0 +1,41 @@
+@import '~theme/index';
+
+.root {
+    .profileMain {
+        margin-top: -80px;
+        padding: 24px 0 8px 0;
+        border-top: 5px solid darken($light-grey, 5%);
+
+        .imgContainer {
+           
+            overflow: hidden;
+            @include md{
+                height: 200px;
+            }
+            .image {
+                width: 100%;
+            }
+
+        }
+        .btnContainer{
+            padding: 16px;
+        }
+        .infoContainer{
+            padding: 16px;
+            .info{
+                color: $dark-grey;
+                @include font-size($lg-font);
+                margin-bottom: 10px;
+            }
+            .bio{
+                @include font-size($xs-font);
+                color: $text;
+            }
+        }
+        .action{
+            background: $brand;
+            color: $white;
+        }
+
+    }
+}

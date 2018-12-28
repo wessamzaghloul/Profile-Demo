@@ -1,6 +1,6 @@
 @import '~theme/index';
 .footer {
-    background: $light-grey;
+    background: darken($light-grey, 5%);
     color: $text;
     text-align: center;
     @include font-size($xs-font);

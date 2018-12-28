@@ -1,0 +1,12 @@
+@import '~theme/index';
+.root{
+    .cover{
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: top center;
+        height: 200px; 
+        @include md{
+            height: 350px; 
+        }
+    }
+}
