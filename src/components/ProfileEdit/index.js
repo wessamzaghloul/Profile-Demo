@@ -5,10 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import classes from "./ProfileEdit.module.scss";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
 import Autocomplete from "components/Autocomplete";
 
 const ProfileEdit = ({
@@ -106,7 +103,7 @@ const ProfileEdit = ({
           />
         </FormControl>
         <FormControl className={classes.formControl} fullWidth>
-          <Button containerelement="label"  variant="outlined">
+          <Button containerelement="label" variant="outlined">
             <input
               type="file"
               onChange={event => {
@@ -167,22 +164,55 @@ ProfileEdit.propTypes = {
       lon: PropTypes.string,
       city: PropTypes.string
     }),
-    profilePicture: PropTypes.string,
-    coverImg: PropTypes.string
+    profilePicture: PropTypes.string
   }),
   addChange: PropTypes.func.isRequired,
   hasChanged: PropTypes.bool,
-  onSaveAction: PropTypes.func,
-  onDiscardAction: PropTypes.func,
-  choices: PropTypes.object,
-  locations: PropTypes.array
+  onSaveAction: PropTypes.func.isRequired,
+  onDiscardAction: PropTypes.func.isRequired,
+  choices: PropTypes.object.isRequired,
+  locations: PropTypes.array.isRequired
 };
 
 ProfileEdit.defaultProps = {
-  data: null,
+  data: {
+    name: null,
+    about: null,
+    birthday: null,
+    gender: {
+      id: null,
+      name: null
+    },
+    ethnicity: {
+      id: null,
+      name: null
+    },
+    religion: {
+      id: null,
+      name: null
+    },
+    figure: {
+      id: null,
+      name: null
+    },
+    location: {
+      lat: null,
+      lon: null,
+      city: null
+    },
+    profilePicture: null
+  },
+  addChange: () => console.info("add change"),
   hasChanged: true,
   onDiscardAction: () => console.info("Discard"),
-  onSaveAction: () => console.info("Save")
+  onSaveAction: () => console.info("Save"),
+  choices: {
+    gender: [],
+    ethnicity: [],
+    religion: [],
+    figure: []
+  },
+  locations: []
 };
 
 export default ProfileEdit;

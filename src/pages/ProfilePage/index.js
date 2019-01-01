@@ -28,15 +28,14 @@ class ProfilePage extends Component {
     if (!profileEdit || !profileView) {
       return <span>LOADING</span>;
     }
-    console.log(profileEdit);
-    const exitEdit = () =>{
+    const exitEdit = () => {
       setIsEditOpen(false);
       discardChanges();
-    }
-    const saveEdit = () =>{
+    };
+    const saveEdit = () => {
       setIsEditOpen(false);
       saveChanges();
-    }
+    };
     return (
       <section>
         <PageCover src={profileView.coverImg} />
@@ -76,6 +75,8 @@ class ProfilePage extends Component {
   }
 }
 ProfilePage.propTypes = {
+  isEditOpen: PropTypes.bool,
+  setIsEditOpen: PropTypes.func.isRequired,
   addChange: PropTypes.func.isRequired,
   discardChanges: PropTypes.func.isRequired,
   profileView: PropTypes.shape({
@@ -156,9 +157,17 @@ ProfilePage.propTypes = {
 };
 
 ProfilePage.defaultProps = {
+  isEditOpen: false,
+  setIsEditOpen: () => console.info("is edit open ?"),
+  addChange: () => console.info("add change"),
+  discardChanges: () => console.info("discard change"),
   profileView: null,
   profileEdit: null,
-  hasChanged: true
+  hasChanged: true,
+  choices: null,
+  locations: null,
+  saveChanges: () => console.info("Save changes"),
+  setUpEditableForm: () => console.info("setup form")
 };
 
 export default ProfilePage;

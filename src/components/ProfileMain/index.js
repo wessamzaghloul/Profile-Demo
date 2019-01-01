@@ -5,7 +5,14 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import classes from "./ProfileMain.module.scss";
 
-const ProfileMain = ({ src, name, about, setIsEditOpen, isEditOpen, exitEdit }) => (
+const ProfileMain = ({
+  src,
+  name,
+  about,
+  setIsEditOpen,
+  isEditOpen,
+  exitEdit
+}) => (
   <div className={classes.root}>
     <Paper className={classes.profileMain} square>
       <div className={classes.imgContainer}>
@@ -56,7 +63,10 @@ ProfileMain.propTypes = {
 ProfileMain.defaultProps = {
   src: null,
   name: null,
-  bio: null
+  bio: null,
+  setIsEditOpen: () => console.info("set edit"),
+  isEditOpen: false,
+  exitEdit: () => console.info("exit edit")
 };
 
 export default ProfileMain;

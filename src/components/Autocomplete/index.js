@@ -199,6 +199,7 @@ class Autocomplete extends React.Component {
         }
       })
     };
+    // console.log(Array.isArray(suggestions))
 
     return (
       <div className={classes.root}>
@@ -225,7 +226,24 @@ class Autocomplete extends React.Component {
 
 Autocomplete.propTypes = {
   classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired
+  theme: PropTypes.object.isRequired,
+  suggestions: PropTypes.array.isRequired,
+  addChange: PropTypes.func.isRequired,
+  type: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
+  value: PropTypes.object.isRequired,
+  getLabel: PropTypes.func.isRequired
 };
+Autocomplete.defaultProps = {
+  classes: null,
+  theme: null,
+  suggestions: [],
+  addChange: () => console.info("add change"),
+  type: "",
+  placeholder: null,
+  value: {},
+  getLabel: () => console.info("get label")
+};
+
 
 export default withStyles(styles, { withTheme: true })(Autocomplete);

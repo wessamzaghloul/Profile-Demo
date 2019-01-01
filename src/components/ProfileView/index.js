@@ -27,7 +27,7 @@ const ProfileView = ({ data }) => (
           <ListItemText primary="Gender" secondary={data.gender.name} />
         </ListItem>
         <ListItem>
-          <ListItemText primary="Name" secondary={data.ethnicity.name} />
+          <ListItemText primary="Ethnicity" secondary={data.ethnicity.name} />
         </ListItem>
         <ListItem>
           <ListItemText primary="Religion" secondary={data.religion.name} />
@@ -73,12 +73,38 @@ ProfileView.propTypes = {
       lat: PropTypes.string,
       lon: PropTypes.string,
       city: PropTypes.string
-    }),
-    profilePicture: PropTypes.string,
-    coverImg: PropTypes.string
+    })
   })
 };
 
-ProfileView.defaultProps = {};
+ProfileView.defaultProps = {
+  data: {
+    name: null,
+    about: null,
+    birthday: null,
+    gender: {
+      id: null,
+      name: null
+    },
+    ethnicity: {
+      id: null,
+      name: null
+    },
+    religion: {
+      id: null,
+      name: null
+    },
+    height: null,
+    figure: {
+      id: null,
+      name: null
+    },
+    location: {
+      lat: null,
+      lon: null,
+      city: null
+    }
+  },
+};
 
 export default ProfileView;

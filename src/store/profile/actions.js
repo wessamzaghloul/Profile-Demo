@@ -1,19 +1,15 @@
 import * as constants from "./constants";
 
-
-export const setIsEditOpen = (isEditOpen) => ({
-    type: constants.SET_EDIT_STATE,
-    isEditOpen
+export const setIsEditOpen = isEditOpen => ({
+  type: constants.SET_EDIT_STATE,
+  isEditOpen
 });
 
-export const addChange = (fieldName, fieldValue) => {
-  console.log(fieldValue);
-  return {
-    type: constants.ADD_CHANGE,
-    fieldName,
-    fieldValue
-  };
-};
+export const addChange = (fieldName, fieldValue) => ({
+  type: constants.ADD_CHANGE,
+  fieldName,
+  fieldValue
+});
 
 export const setNewEditableForm = (form, choices, locations) => ({
   type: constants.SET_UP_EDIT_FORM,
