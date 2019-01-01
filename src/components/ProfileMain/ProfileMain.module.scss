@@ -9,7 +9,7 @@
         border-top: 5px solid darken($light-grey, 5%);
         background-color: $white;
 
-        @include md {
+        @include sm {
             height: calc(100% + 43px);
         }
 

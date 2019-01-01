@@ -103,7 +103,9 @@ const ProfileEdit = ({
           />
         </FormControl>
         <FormControl className={classes.formControl} fullWidth>
-          <Button containerelement="label" variant="outlined">
+          <label className={classes.fakeLabel}>Profile Picture</label>
+          <div className={classes.fakeButton}>
+
             <input
               type="file"
               onChange={event => {
@@ -112,8 +114,7 @@ const ProfileEdit = ({
                 addChange("profilePicture", url);
               }}
             />
-            Upload Profile Picture
-          </Button>
+          </div>
         </FormControl>
         <div className={classes.actionBar}>
           <Button
