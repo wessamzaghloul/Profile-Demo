@@ -1,11 +1,17 @@
 @import '~theme/index';
 
 .root {
+    height: 100%;
+
     .profileMain {
         margin-top: -80px;
         padding: 24px 0 8px 0;
         border-top: 5px solid darken($light-grey, 5%);
         background-color: $white;
+
+        @include md {
+            height: calc(100% + 43px);
+        }
 
         .imgContainer {
 
