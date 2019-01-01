@@ -5,35 +5,50 @@
         margin-top: -80px;
         padding: 24px 0 8px 0;
         border-top: 5px solid darken($light-grey, 5%);
+        background-color: $white;
 
         .imgContainer {
-           
+
             overflow: hidden;
-            @include md{
+
+            @include md {
                 height: 200px;
             }
+
             .image {
                 width: 100%;
             }
 
         }
-        .btnContainer{
+
+        .btnContainer {
             padding: 16px;
+            background: $white;
         }
-        .infoContainer{
+
+        .infoContainer {
             padding: 16px;
-            .info{
+            background: $white;
+
+            .info {
                 color: $dark-grey;
                 @include font-size($lg-font);
                 margin-bottom: 10px;
             }
-            .bio{
+
+            .bio {
                 @include font-size($xs-font);
                 color: $text;
             }
         }
-        .action{
+
+        .action {
             background: $brand;
+            color: $white;
+        }
+
+        .discard {
+            background: $error;
             color: $white;
         }
 

@@ -1,0 +1,37 @@
+@import '~theme/index';
+.root{
+    .title{
+        @include font-size($xxl-font);
+        color: $text;
+        margin: 0;
+        padding-bottom: 24px;
+    }
+    .container{
+        padding: 16px 24px;
+        border-top: 5px solid darken($light-grey, 5%);
+        background-color: $white; 
+
+        .form{
+            margin-bottom: 16px;
+            .formControl{
+                margin-bottom: 16px;
+                input[type="file"]{
+                    width: 100%;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    left: 0;
+                    bottom: 0;
+                    opacity: 0;
+                }
+            }
+            .actionBar{
+                text-align: right;
+                button{
+                    margin: 8px;
+                    min-width: 100px;
+                }
+            }
+        }
+    }
+}

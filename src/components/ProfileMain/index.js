@@ -5,7 +5,7 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import classes from "./ProfileMain.module.scss";
 
-const ProfileMain = ({ src, name, bio }) => (
+const ProfileMain = ({ src, name, about, setIsEditOpen, isEditOpen, exitEdit }) => (
   <div className={classes.root}>
     <Paper className={classes.profileMain} square>
       <div className={classes.imgContainer}>
@@ -16,13 +16,29 @@ const ProfileMain = ({ src, name, bio }) => (
           Welcome, {name}
         </Typography>
         <Typography component="p" className={classes.bio}>
-          {bio}
+          {about}
         </Typography>
       </div>
       <div className={classes.btnContainer}>
-        <Button variant="contained" fullWidth className={classes.action}>
-        Edit Profile  
-        </Button>
+        {isEditOpen ? (
+          <Button
+            variant="contained"
+            fullWidth
+            className={classes.discard}
+            onClick={() => exitEdit()}
+          >
+            Exit Edit
+          </Button>
+        ) : (
+          <Button
+            variant="contained"
+            fullWidth
+            className={classes.action}
+            onClick={() => setIsEditOpen(true)}
+          >
+            Edit Profile
+          </Button>
+        )}
       </div>
     </Paper>
   </div>
@@ -31,7 +47,10 @@ const ProfileMain = ({ src, name, bio }) => (
 ProfileMain.propTypes = {
   src: PropTypes.string,
   name: PropTypes.string,
-  bio: PropTypes.string
+  bio: PropTypes.string,
+  setIsEditOpen: PropTypes.func.isRequired,
+  isEditOpen: PropTypes.bool.isRequired,
+  exitEdit: PropTypes.func.isRequired
 };
 
 ProfileMain.defaultProps = {

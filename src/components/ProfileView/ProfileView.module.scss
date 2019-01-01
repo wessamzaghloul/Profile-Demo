@@ -1,0 +1,14 @@
+@import '~theme/index';
+.root{
+    .title{
+        @include font-size($xxl-font);
+        color: $text;
+        margin: 0;
+        padding-bottom: 24px;
+    }
+    .container{
+        padding: 16px 24px;
+        border-top: 5px solid darken($light-grey, 5%);
+        background-color: $white; 
+    }
+}

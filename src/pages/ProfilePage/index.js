@@ -1,28 +1,73 @@
 import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
 import PageCover from "components/PageCover";
-import coverImg from "assets/cover.jpg";
-import profileImg from "assets/profile.jpg";
 import ProfileMain from "components/ProfileMain";
+import ProfileEdit from "components/ProfileEdit";
+import ProfileView from "components/ProfileView";
+
 import PropTypes from "prop-types";
 
 class ProfilePage extends Component {
+  componentDidMount() {
+    this.props.setUpEditableForm();
+  }
   render() {
     const {
-      profileView
+      isEditOpen,
+      setIsEditOpen,
+      addChange,
+      discardChanges,
+      profileView,
+      profileEdit,
+      hasChanged,
+      saveChanges,
+      choices,
+      locations,
+      setUpEditableForm
     } = this.props;
+    if (!profileEdit || !profileView) {
+      return <span>LOADING</span>;
+    }
+    console.log(profileEdit);
+    const exitEdit = () =>{
+      setIsEditOpen(false);
+      discardChanges();
+    }
+    const saveEdit = () =>{
+      setIsEditOpen(false);
+      saveChanges();
+    }
     return (
       <section>
-        <PageCover src={coverImg} />
+        <PageCover src={profileView.coverImg} />
 
         <div className="wrapper">
           <Grid container spacing={24}>
             <Grid item xs={12} sm={4}>
-              <ProfileMain src={profileImg} name={profileView.name} bio={profileView.bio}/>
+              <ProfileMain
+                src={profileView.profilePicture}
+                name={profileView.name}
+                about={profileView.about}
+                isEditOpen={isEditOpen}
+                setIsEditOpen={setIsEditOpen}
+                exitEdit={exitEdit}
+              />
             </Grid>
             <Grid item xs={12} sm={8}>
-              <Paper square>details</Paper>
+              {isEditOpen ? (
+                <ProfileEdit
+                  data={profileEdit}
+                  addChange={addChange}
+                  hasChanged={hasChanged}
+                  onSaveAction={saveEdit}
+                  onDiscardAction={exitEdit}
+                  choices={choices}
+                  locations={locations}
+                  setUpEditableForm={setUpEditableForm}
+                />
+              ) : (
+                <ProfileView data={profileView} />
+              )}
             </Grid>
           </Grid>
         </div>
@@ -31,14 +76,89 @@ class ProfilePage extends Component {
   }
 }
 ProfilePage.propTypes = {
+  addChange: PropTypes.func.isRequired,
+  discardChanges: PropTypes.func.isRequired,
   profileView: PropTypes.shape({
     name: PropTypes.string,
-    bio: PropTypes.string,
+    about: PropTypes.string,
+    realName: PropTypes.string,
+    birthday: PropTypes.string,
+    gender: PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string
+    }),
+    ethnicity: PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string
+    }),
+    religion: PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string
+    }),
+    height: PropTypes.number,
+    figure: PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string
+    }),
+    maritalStatus: PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string
+    }),
+    occupation: PropTypes.string,
+    location: PropTypes.shape({
+      lat: PropTypes.string,
+      lon: PropTypes.string,
+      city: PropTypes.string
+    }),
+    profilePicture: PropTypes.string,
+    coverImg: PropTypes.string
   }),
+  profileEdit: PropTypes.shape({
+    name: PropTypes.string,
+    about: PropTypes.string,
+    realName: PropTypes.string,
+    birthday: PropTypes.string,
+    gender: PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string
+    }),
+    ethnicity: PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string
+    }),
+    religion: PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string
+    }),
+    height: PropTypes.number,
+    figure: PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string
+    }),
+    maritalStatus: PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string
+    }),
+    occupation: PropTypes.string,
+    location: PropTypes.shape({
+      lat: PropTypes.string,
+      lon: PropTypes.string,
+      city: PropTypes.string
+    }),
+    profilePicture: PropTypes.string,
+    coverImg: PropTypes.string
+  }),
+  choices: PropTypes.object,
+  locations: PropTypes.array,
+  hasChanged: PropTypes.bool,
+  saveChanges: PropTypes.func.isRequired,
+  setUpEditableForm: PropTypes.func.isRequired
 };
 
 ProfilePage.defaultProps = {
   profileView: null,
+  profileEdit: null,
+  hasChanged: true
 };
 
 export default ProfilePage;
